@@ -19,11 +19,12 @@ steps:
     volumes:
       - name: docker
         path: /var/run/docker.sock
-    when:
-      branch:
-        - master
-      event:
-        - pull_request
+
+trigger:
+  branch:
+    - master
+  event:
+    - pull_request
 
 volumes:
   - name: docker
