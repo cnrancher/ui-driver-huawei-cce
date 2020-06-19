@@ -37,9 +37,9 @@ steps:
   image: trylife/aliyun-ossutil:latest
   environment:
     OSS_KEY_ID:
-      from_secret: oss_key_id
+      from_secret: OSS_KEY_ID
     OSS_KEY_SECRET:
-      from_secret: oss_key_secret
+      from_secret: OSS_KEY_SECRET
   commands:
     - ls
     - echo $$OSS_KEY_ID
