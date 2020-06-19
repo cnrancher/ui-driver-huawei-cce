@@ -42,7 +42,7 @@ steps:
       from_secret: OSS_KEY_SECRET
   commands:
     - ls
-    - echo $$OSS_KEY_ID
+    - echo ${OSS_KEY_ID}
     - ossutil config  -L CH -e "oss-cn-beijing.aliyuncs.com" -i $$OSS_KEY_ID -k $$OSS_KEY_SECRET
     - ossutil cp -rf ./dist oss://sy-ui/yuzeng/huawei-cce/${DRONE_COMMIT_BRANCH}/${DRONE_BUILD_NUMBER}/external
   when:
