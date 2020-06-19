@@ -35,10 +35,13 @@ steps:
 
 - name: deployment-to-oss
   image: trylife/aliyun-ossutil:latest
-  secrets: [oss_key_id,oss_key_secret,OSS_KEY_ID]
+  oss_key_id:
+    from_secret: oss_key_id
+  oss_key_secret:
+    from_secret: oss_key_secret
   commands:
     - ls
-    - echo $${OSS_KEY_ID}
+    - echo $${oss_key_id}
     - ossutil config  -L CH -e "oss-cn-beijing.aliyuncs.com" -i $${OSS_KEY_ID} -k $${OSS_KEY_SECRET}
     - ossutil cp -rf ./dist oss://sy-ui/yuzeng/huawei-cce/${DRONE_COMMIT_BRANCH}/${DRONE_BUILD_NUMBER}/external
   when:
