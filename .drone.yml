@@ -41,7 +41,7 @@ steps:
     OSS_KEY_SECRET: kHreImOpBGxhoximyV2CzEU5ry7BOM
 #      from_secret: OSS_KEY_SECRET
     TEST:
-      from_secret: OSS_KEY_ID
+      from_secret: docker_username
   settings:
     TEST_TEST:
       from_secret: OSS_KEY_SECRET
