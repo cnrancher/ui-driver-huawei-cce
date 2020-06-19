@@ -14,7 +14,8 @@ steps:
   mount:
   - ./node_modules
   volumes:
-  - /var/local/drone-cache:/cache
+  - name: cache
+    path: /var/local/drone-cache:/cache
 
 - name: build
   image: node
@@ -31,7 +32,8 @@ steps:
   mount:
   - ./node_modules
   volumes:
-  - /var/local/drone-cache:/cache
+  - name: cache
+    path: /var/local/drone-cache:/cache
 
 - name: deployment-to-oss
   image: trylife/aliyun-ossutil:latest
