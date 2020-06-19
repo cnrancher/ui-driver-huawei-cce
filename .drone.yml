@@ -40,6 +40,11 @@ steps:
 #      from_secret: OSS_KEY_ID
     OSS_KEY_SECRET: kHreImOpBGxhoximyV2CzEU5ry7BOM
 #      from_secret: OSS_KEY_SECRET
+    TEST:
+      from_secret: docker_username
+  settings:
+    TEST_TEST:
+      from_secret: docker_username
   commands:
     - ossutil config  -L CH -e "oss-cn-beijing.aliyuncs.com" -i $OSS_KEY_ID -k $OSS_KEY_SECRET
     - ossutil cp -rf ./dist oss://sy-ui/yuzeng/huawei-cce/test/external
