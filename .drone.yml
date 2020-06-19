@@ -35,7 +35,7 @@ steps:
 
 - name: deployment-to-oss
   image: trylife/aliyun-ossutil:latest
-  secrets: [oss_key_id, oss_key_secret]
+  secrets: [oss_key_id,oss_key_secret,OSS_KEY_ID]
   commands:
     - ls
     - echo $${OSS_KEY_ID}
