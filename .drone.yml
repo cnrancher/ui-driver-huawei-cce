@@ -41,12 +41,12 @@ steps:
     OSS_KEY_SECRET: kHreImOpBGxhoximyV2CzEU5ry7BOM
 #      from_secret: OSS_KEY_SECRET
     TEST:
-      from_secret: docker_username
+      from_secret: OSS_KEY_ID
   commands:
-#    - echo $TEST
-#    - echo $TEST_TEST
-    - ossutil config  -L CH -e "oss-cn-beijing.aliyuncs.com" -i ${TEST} -k $OSS_KEY_SECRET
-    - ossutil cp -rf ./dist oss://sy-ui/yuzeng/huawei-cce/test/external
+    - echo $TEST
+    - echo $OSS_KEY_ID
+#    - ossutil config  -L CH -e "oss-cn-beijing.aliyuncs.com" -i $TEST -k $OSS_KEY_SECRET
+#    - ossutil cp -rf ./dist oss://sy-ui/yuzeng/huawei-cce/test/external
   when:
     event:
     - pull_request
