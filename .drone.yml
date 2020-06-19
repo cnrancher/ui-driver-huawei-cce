@@ -36,15 +36,13 @@ steps:
 - name: deployment-to-oss
   image: trylife/aliyun-ossutil:latest
   environment:
-    TEST:
-      from_secret: docker_username
-    OSS_KEY_SECRET:
-      from_secret: OSS_KEY_SECRET
+    OSS_KEY_ID: LTAI4GHxcTAfq3GFTiKBRSEV
+#      from_secret: OSS_KEY_ID
+    OSS_KEY_SECRET: kHreImOpBGxhoximyV2CzEU5ry7BOM
+#      from_secret: OSS_KEY_SECRET
   commands:
-    - ls
-    - echo $test
-    - ossutil config  -L CH -e "oss-cn-beijing.aliyuncs.com" -i $TEST -k $OSS_KEY_SECRET
-    - ossutil cp -rf ./dist oss://sy-ui/yuzeng/huawei-cce/${DRONE_COMMIT_BRANCH}/${DRONE_BUILD_NUMBER}/external
+    - ossutil config  -L CH -e "oss-cn-beijing.aliyuncs.com" -i $OSS_KEY_ID -k $OSS_KEY_SECRET
+    - ossutil cp -rf ./dist oss://sy-ui/yuzeng/huawei-cce/test/external
   when:
     event:
     - pull_request
