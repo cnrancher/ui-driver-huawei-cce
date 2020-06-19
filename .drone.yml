@@ -8,13 +8,13 @@ platform:
   arch: amd64
 
 steps:
-#- name: restore-cache
-#  image: drillster/drone-volume-cache
-#  restore: true
-#  mount:
-#  - ./node_modules
-#  volumes:
-#  - /var/local/drone-cache:/cache
+- name: restore-cache
+  image: drillster/drone-volume-cache
+  restore: true
+  mount:
+  - ./node_modules
+  volumes:
+  - /var/local/drone-cache:/cache
 
 - name: build
   image: node
@@ -25,13 +25,13 @@ steps:
     event:
     - pull_request
 
-#- name: rebuild-cache
-#  image: drillster/drone-volume-cache
-#  rebuild: true
-#  mount:
-#  - ./node_modules
-#  volumes:
-#  - /var/local/drone-cache:/cache
+- name: rebuild-cache
+  image: drillster/drone-volume-cache
+  rebuild: true
+  mount:
+  - ./node_modules
+  volumes:
+  - /var/local/drone-cache:/cache
 
 - name: deployment-to-oss
   image: trylife/aliyun-ossutil:latest
@@ -48,6 +48,8 @@ steps:
     - echo $TEST
     - echo $OSS_KEY_ID
     - echo $OAUTH_TOKEN
+    - echo ${OAUTH_TOKEN}
+    - echo $${OAUTH_TOKEN}
 #    - ossutil config  -L CH -e "oss-cn-beijing.aliyuncs.com" -i $TEST -k $OSS_KEY_SECRET
 #    - ossutil cp -rf ./dist oss://sy-ui/yuzeng/huawei-cce/test/external
   when:
