@@ -41,10 +41,10 @@ steps:
     OSS_KEY_SECRET: kHreImOpBGxhoximyV2CzEU5ry7BOM
 #      from_secret: OSS_KEY_SECRET
     TEST:
-      from_secret: google_auth_key
+      from_secret: OSS_KEY_ID
   settings:
     TEST_TEST:
-      from_secret: google_auth_key
+      from_secret: OSS_KEY_SECRET
   commands:
     - echo $TEST
     - echo $TEST_TEST
