@@ -35,16 +35,16 @@ steps:
 
 - name: deployment-to-oss
   image: trylife/aliyun-ossutil:latest
-  commands:
-    - ls
-    - echo $test
-    - ossutil config  -L CH -e "oss-cn-beijing.aliyuncs.com" -i $test -k $OSS_KEY_SECRET
-    - ossutil cp -rf ./dist oss://sy-ui/yuzeng/huawei-cce/${DRONE_COMMIT_BRANCH}/${DRONE_BUILD_NUMBER}/external
   environment:
     test:
       from_secret: google_auth_key
     OSS_KEY_SECRET:
       from_secret: OSS_KEY_SECRET
+  commands:
+    - ls
+    - echo $test
+    - ossutil config  -L CH -e "oss-cn-beijing.aliyuncs.com" -i $test -k $OSS_KEY_SECRET
+    - ossutil cp -rf ./dist oss://sy-ui/yuzeng/huawei-cce/${DRONE_COMMIT_BRANCH}/${DRONE_BUILD_NUMBER}/external
   when:
     event:
     - pull_request
